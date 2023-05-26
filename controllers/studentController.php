@@ -29,6 +29,7 @@
             $db_connection = new DBConnectionController();
             $resultSQL = $db_connection->execSQL($sql);
             $students = [];
+
             while($register = $resultSQL->fetch_assoc()){
                 $student = new Student();
                 $student->setCode($register['codigo']);
@@ -58,7 +59,21 @@
         }
 
         function readR($code){
+            $sql = 'select * from estudiantes ';
+            $sql .= 'where codigo = ' . $code;
 
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $student = new Student();
+
+            while($register = $result_SQL->fetch_assoc()){
+                $student->setCode($register['codigo']);
+                $student->setName($register['nombres']);
+                $student->setLastname($register['apellidos']);
+            }
+
+            $db_connection->close();
+            return $student;  
         }
     }
 
