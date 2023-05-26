@@ -7,8 +7,21 @@
     use activitiesM\Activity;
 
     class StudentController extends DBController{
-        function create($student){
 
+        function create($student){
+            $sql = 'insert into estudiantes ';
+            $sql .= '(codigo, nombres, apellidos, created_at, updated_at) values ';
+            $sql .= '(';
+            $sql .= $student->getCode() . ', ';
+            $sql .= '"' . $student->getName() . '", ';
+            $sql .= '"' . $student->getLastname() . '", ';
+            $sql .= 'null, ';
+            $sql .= 'null)';
+
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $db_connection->close();
+            return $result_SQL;
         }
 
         function read(){
@@ -28,7 +41,16 @@
         }
 
         function update($code, $student){
+            $sql = 'update estudiantes set ';
+            $sql .= 'codigo = "' . $student->getCode() . '", ';
+            $sql .= 'nombres = "' . $student->getName() . '", ';
+            $sql .= 'apellidos = "' . $student->getLastname() . '" ';
+            $sql .= 'where codigo = ' . $code;
 
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $db_connection->close();
+            return $result_SQL;  
         }
 
         function delete($code){
