@@ -19,6 +19,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <title>Registro de Estudiantes</title>
 </head>
 <body>
@@ -44,14 +47,14 @@
             <tbody id="contenidoTb">
 
                 <!-- Se traen todos los registros existentes -->
-                
+
                 <?php
                     foreach($students as $student){
                         echo '<tr>';
                             echo '<td>' . $student->getCode() . '</td>';
                             echo '<td>' . $student->getName() . '</td>';
                             echo '<td>' . $student->getLastname() . '</td>';
-                            echo '<td><td><a>Notas</a></td></td>';
+                            echo '<td><td><a href="views/scoreTable.php?codigo=' . $student->getCode() .'">Notas</a></td></td>';
                             echo '<td><a href="views/formE.php?codigo=' . $student->getCode() .'">Modificar</a></td>';
                             echo '<td><a href="views/deleteStudent.php?codigo=' . $student->getCode() .'">Eliminar</a></td></td>';
                         echo '</tr>';        

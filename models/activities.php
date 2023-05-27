@@ -11,10 +11,6 @@
             return $this->id;
         }
 
-        public function setId($value){
-            $this->id = $value;
-        }
-
         public function getDescription(){
             return $this->description;
         }

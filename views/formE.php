@@ -1,6 +1,5 @@
 <?php 
     require '../models/students.php';
-    require '../models/activities.php';
     require '../controllers/DBConnectionController.php';
     require '../controllers/baseStudentsController.php';
     require '../controllers/studentController.php';    
