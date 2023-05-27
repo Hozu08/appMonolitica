@@ -86,8 +86,20 @@
     }
 
     class ActivityController extends DBController{
-        function create($Score){
+        function create($activity){
+            $sql = 'insert into actividades ';
+            $sql .= '(descripcion, nota, codigoEstudiante, created_at, updated_at) values ';
+            $sql .= '("';
+            $sql .= $activity->getDescription() . '", ';
+            $sql .= '' . $activity->getScore() . ', ';
+            $sql .= '' . $activity->getCodeStudent() . ', ';
+            $sql .= 'null, ';
+            $sql .= 'null)';
 
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $db_connection->close();
+            return $result_SQL;
         }
 
         function read(){
@@ -107,12 +119,16 @@
             return $activities;
         }
 
-        function update($id, $Score){
+        function update($code, $activity){
 
         }
 
         function delete($id){
-
+            $sql = 'delete from actividades where id= ' . $id;
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $db_connection->close();
+            return $result_SQL;
         }
 
         function readCR($code){
@@ -125,6 +141,7 @@
 
             while($register = $resultSQL->fetch_assoc()){
                 $activity = new Activity();
+                $activity->setId($register['id']);
                 $activity->setDescription($register['descripcion']);
                 $activity->setScore($register['nota']);
                 $activity->setCodeStudent($register['codigoEstudiante']);

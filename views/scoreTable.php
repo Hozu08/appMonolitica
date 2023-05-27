@@ -60,7 +60,7 @@
                             echo '<td>' . $activity->getScore() . '</td>';
                             echo '<td>' . $activity->getCodeStudent() . '</td>';
                             echo '<td><a href="formScore.php?description=' . $activity->getDescription() .'&codigoE=' . $activity->getCodeStudent() .'">Modificar</a></td>';
-                            echo '<td><a href="deleteScore.php?codigoE=' . $activity->getCodeStudent() .'">Eliminar</a></td></td>';
+                            echo '<td><a href="deleteActivity.php?id=' . $activity->getId() .'">Eliminar</a></td></td>';
                         echo '</tr>';        
                     }
                 ?>

@@ -37,21 +37,21 @@
         }        
     ?>
  
-    <form action="<?php echo $urlA ?>" methos='post'>
+    <form action="<?php echo $urlA ?>" method='post'>
         <h1><?php echo $title ?></h1>
         <br>
         <label>
             <span>Código estudiante: </span>
             <p><?php echo $showC ?></p>
-            <input type="hidden" name="codeStudent" value="<?php echo $activity->getCodeStudent();?>">
+            <input type="number" name="codeStudent" value="<?php echo $activity->getCodeStudent();?>" require>
         </label>
         <label for="descriptionA">
             <span>Descripción: </span>
-            <input type="text" id="descriptionA" name="description" value="<?php echo $activity->getDescription();?>">
+            <input type="text" id="descriptionA" name="description" value="<?php echo $activity->getDescription();?>" require>
         </label>
         <label for="scoreA">
             <span>Nota: </span>
-            <input type="number" id="scoreA" name="score" value="<?php echo $activity->getScore();?>">
+            <input type="number" min="0" max="5" step="any" id="scoreA" name="score" value="<?php echo $activity->getScore();?>" require>
         </label>
         <button type="submit">Aceptar</button>
     </form>
