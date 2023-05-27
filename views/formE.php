@@ -24,7 +24,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <title>Formulario Estudiantes</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -44,9 +48,11 @@
             }        
     ?>
 
-    <form action="<?php echo $urlA ?>" method="post">
-        <h1><?php echo $title ?></h1>
-        <br>
+    <header>
+    <h1 id="tituloFE"><?php echo $title ?></h1>
+    </header>
+
+    <form id="contenedorFE" action="<?php echo $urlA ?>" method="post">
         <p><?php echo $warning?></p>
         <label>
             <span>Código: </span>
@@ -61,10 +67,10 @@
             <span>Apellidos: </span>
             <input type="text" value="<?php echo $student->getLastname();?>" name="lastname" require>
         </label>
-        <button type="submit">Aceptar</button>
+        <button id="aceptarFEBtn" type="submit">Aceptar</button>
     </form>
 
-    <button onclick="location.href='<?php echo $homeUrl ?>'" type="button">Regresar</button>
-    
+    <button id="regresarFEBtn" onclick="location.href='<?php echo $homeUrl ?>'" type="button">Regresar</button>
+    <footer></footer>
 </body>
 </html>

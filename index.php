@@ -23,6 +23,7 @@
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
     <title>Registro de Estudiantes</title>
+    <link rel="stylesheet" href="views/css/styles.css">
 </head>
 <body>
     <header>
@@ -34,7 +35,7 @@
 
         <form action="<?php echo $urlE ?>" method="post">
             <table id="contenedorT">
-                <h2>Estudiantes</h2>
+                <h2 id="tituloE">Estudiantes</h2>
                 <thead>
                     <tr>
                         <th>Código</th>
