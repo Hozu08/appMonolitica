@@ -55,7 +55,11 @@
         }
 
         function delete($code){
-            $sql = 'delete from estudiantes where codigo = ' . $code;
+            $sql = 'delete from estudiantes where codigo= ' . $code;
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $db_connection->close();
+            return $result_SQL;
         }
 
         function readR($code){

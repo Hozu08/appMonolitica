@@ -42,6 +42,9 @@
             </thead>
 
             <tbody id="contenidoTb">
+
+                <!-- Se traen todos los registros existentes -->
+                
                 <?php
                     foreach($students as $student){
                         echo '<tr>';
