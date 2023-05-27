@@ -8,7 +8,7 @@
     use studentsM\Student;
 
     $student = new Student();
-    $students = new StudentController();
+    $studentController = new StudentController();
 
     $title = '';
     $warning = '';
@@ -41,7 +41,6 @@
                 $showC = '<p>' . $_GET['codigo'] . '</p>';
                 $typeC = 'hidden';
                 echo '<span>' . $_GET['codigo'] . '</span>';
-                $studentController = new StudentController();
                 $student = $studentController->readR($code);
             }        
     ?>

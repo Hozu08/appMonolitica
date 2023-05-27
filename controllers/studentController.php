@@ -79,6 +79,10 @@
             $db_connection->close();
             return $student;  
         }
+
+        function readCR($code){
+
+        }
     }
 
     class ActivityController extends DBController{
@@ -111,10 +115,10 @@
 
         }
 
-        function readR($code){
+        function readCR($code){
             $sql = 'select * from actividades ';
             $sql .= 'where codigoEstudiante =' . $code;
-            
+
             $db_connection = new DBConnectionController();
             $resultSQL = $db_connection->execSQL($sql);
             $activities = [];
@@ -128,6 +132,24 @@
             }
             $db_connection->close();
             return $activities;
+        }
+
+        function readR($code){
+            $sql = 'select * from actividades ';
+            $sql .= 'where codigoEstudiante = ' . $code;
+
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $activity = new Activity();
+
+            while($register = $result_SQL->fetch_assoc()){
+                $activity->setDescription($register['descripcion']);
+                $activity->setScore($register['nota']);
+                $activity->setCodeStudent($register['codigoEstudiante']);
+            }
+
+            $db_connection->close();
+            return $activity;  
         }
     }
 ?>

@@ -10,12 +10,13 @@
     use studentController\StudentController;
     use studentsM\Student;
 
-    $homeUrl = 'http://localhost/appMonolitica/index.php';
-    $urlE = 'http://localhost/appMonolitica/views/newActivity.php';
     $code = $_GET['codigo'];
+    $homeUrl = 'http://localhost/appMonolitica/index.php';
+    $urlE = 'http://localhost/appMonolitica/views/formScore.php';
+    
 
     $studentAController = new ActivityController();
-    $activityE = $studentAController->readR($code);
+    $activityE = $studentAController->readCR($code);
 
     $studentController = new StudentController();
     $student = $studentController->readR($code);
@@ -37,7 +38,7 @@
     <br>
     <label>Apellidos: <?php echo $student->getLastName() ?></label>
 
-    <form action="">
+    <form action="<?php echo $urlE ?>" method="post">
         <table>
             <thead>
                 <tr>
@@ -58,15 +59,16 @@
                             echo '<td>' . $activity->getDescription() . '</td>';
                             echo '<td>' . $activity->getScore() . '</td>';
                             echo '<td>' . $activity->getCodeStudent() . '</td>';
-                            echo '<td><a href="modifyScore.php?codigoE=' . $code .'">Modificar</a></td>';
-                            echo '<td><a href="deleteScore.php?codigoE=' . $code .'">Eliminar</a></td></td>';
+                            echo '<td><a href="formScore.php?description=' . $activity->getDescription() .'&codigoE=' . $activity->getCodeStudent() .'">Modificar</a></td>';
+                            echo '<td><a href="deleteScore.php?codigoE=' . $activity->getCodeStudent() .'">Eliminar</a></td></td>';
                         echo '</tr>';        
                     }
                 ?>
 
             </tbody>
         </table>
-        <button id="agregarABtn" onclick="location.href='<?php echo $urlE ?>'" type="button">Agregar actividad</button>
+        <input type="hidden" name="codigoE" value="<?php echo $code ?>">
+        <button id="agregarABtn" type="submit">Agregar actividad</button>
     </form>
     <button onclick="location.href='<?php echo $homeUrl ?>'" type="button">Regresar</button>
 </body>
