@@ -55,7 +55,7 @@
         }
 
         function delete($code){
-
+            $sql = 'delete from estudiantes where codigo = ' . $code;
         }
 
         function readR($code){

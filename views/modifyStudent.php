@@ -8,8 +8,6 @@
         use studentsM\Student;
 
         $homeUrl = 'http://localhost/appMonolitica/index.php';
-        $originCode = $_POST['codigo'];
-
         $student = new Student();
         $student->setCode($_POST['code']);
         $student->setName($_POST['name']);
@@ -29,12 +27,7 @@
 
         <?php 
                  if($result){
-                        if($originCode == $student->getCode()){
-                                echo '<h1>Estudiante Modificado</h1>';
-                        }else{
-                                echo '<h1>No se pudo modificar el estudiante</h1>';
-                                echo '<p>El codigo ingresado no corresponde al estudiante...</p>';
-                       }       
+                        echo '<h1>Estudiante modificado</h1>';
                 }else{
                         echo '<h1>No se pudo modificar el estudiante</h1>';
                 }

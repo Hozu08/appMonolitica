@@ -10,14 +10,29 @@
     $homeUrl = 'http://localhost/appMonolitica/index.php';
 
     $student = new Student();
-    $student->setCode($_POST['code']);
-    $student->setName($_POST['name']);
-    $student->setLastname($_POST['lastname']);
 
     $studentController = new StudentController();
-    $result = $studentController->create($student);
+    $studentsR = $studentController->read(); 
 
+    $flag = true;
+    $code = $_POST['code'];
+    $warning = '';
 
+    foreach($studentsR as $studentR){
+        if($code == $studentR->getCode()){
+            $flag = false;
+        }
+    }
+
+    if($flag){
+        $student->setCode($_POST['code']);
+        $student->setName($_POST['name']);
+        $student->setLastname($_POST['lastname']);
+        $result = $studentController->create($student);
+    }else{
+        $result = false;
+        $warning = 'Error código existente';
+    }
 
 ?>
 
@@ -34,6 +49,7 @@
                 echo '<h1>Estudiante registrado</h1>';
             }else{
                 echo '<h1>No se pudo registrar el estudiante</h1>';
+                echo '<p>' . $warning . '</p>';
             }
         ?>
         <br> 
