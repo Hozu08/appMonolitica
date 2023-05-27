@@ -19,7 +19,6 @@
 
     $studentController = new StudentController();
     $student = $studentController->readR($code);
-    $Activities = $studentAController->read();
 
 ?>    
 
@@ -32,7 +31,7 @@
 <body>
 
     <h1>Actividades</h1>
-    <label>Código: <?php echo $activityE->getCodeStudent() ?></label>
+    <label>Código: <?php echo $student->getCode() ?></label>
     <br>
     <label>Nombres: <?php echo $student->getName() ?></label>
     <br>
@@ -54,7 +53,7 @@
                 <!-- Se traen todos los registros existentes -->
 
                 <?php
-                    foreach($Activities as $activity){
+                    foreach($activityE as $activity){
                         echo '<tr>';
                             echo '<td>' . $activity->getDescription() . '</td>';
                             echo '<td>' . $activity->getScore() . '</td>';

@@ -111,22 +111,23 @@
 
         }
 
-        function readR($codeE){
+        function readR($code){
             $sql = 'select * from actividades ';
-            $sql .= 'where codigoEstudiante = ' . $codeE;
-
+            $sql .= 'where codigoEstudiante =' . $code;
+            
             $db_connection = new DBConnectionController();
-            $result_SQL = $db_connection->execSQL($sql);
-            $activity = new Activity();
+            $resultSQL = $db_connection->execSQL($sql);
+            $activities = [];
 
-            while($register = $result_SQL->fetch_assoc()){
+            while($register = $resultSQL->fetch_assoc()){
+                $activity = new Activity();
                 $activity->setDescription($register['descripcion']);
                 $activity->setScore($register['nota']);
                 $activity->setCodeStudent($register['codigoEstudiante']);
+                array_push($activities,$activity);
             }
-
             $db_connection->close();
-            return $activity;  
+            return $activities;
         }
     }
 ?>
