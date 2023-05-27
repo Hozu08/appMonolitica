@@ -119,8 +119,17 @@
             return $activities;
         }
 
-        function update($code, $activity){
+        function update($id, $activity){
+            $sql = 'update actividades set ';
+            $sql .= 'descripcion = "' . $activity->getDescription() . '", ';
+            $sql .= 'nota = "' . $activity->getScore() . '", ';
+            $sql .= 'codigoEstudiante = "' . $activity->getCodeStudent() . '" ';
+            $sql .= 'where id = ' . $id;
 
+            $db_connection = new DBConnectionController();
+            $result_SQL = $db_connection->execSQL($sql);
+            $db_connection->close();
+            return $result_SQL;  
         }
 
         function delete($id){

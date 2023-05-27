@@ -59,7 +59,7 @@
                             echo '<td>' . $activity->getDescription() . '</td>';
                             echo '<td>' . $activity->getScore() . '</td>';
                             echo '<td>' . $activity->getCodeStudent() . '</td>';
-                            echo '<td><a href="formScore.php?description=' . $activity->getDescription() .'&codigoE=' . $activity->getCodeStudent() .'">Modificar</a></td>';
+                            echo '<td><a href="formScore.php?id=' . $activity->getId() . '&codigoE=' . $code . '">Modificar</a></td>';
                             echo '<td><a href="deleteActivity.php?id=' . $activity->getId() .'">Eliminar</a></td></td>';
                         echo '</tr>';        
                     }
@@ -68,6 +68,7 @@
             </tbody>
         </table>
         <input type="hidden" name="codigoE" value="<?php echo $code ?>">
+        <input type="hidden" name="id" value="">
         <button id="agregarABtn" type="submit">Agregar actividad</button>
     </form>
     <button onclick="location.href='<?php echo $homeUrl ?>'" type="button">Regresar</button>

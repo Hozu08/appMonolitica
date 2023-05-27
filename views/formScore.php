@@ -16,6 +16,7 @@
     $title = '';
     $showC = empty($_GET['codigoE'])? $_POST['codigoE'] : $_GET['codigoE'];
     $urlA = '';
+    $id = empty($_GET['id'])? $_POST['id'] : $_GET['id'];;
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +27,12 @@
 </head>
 <body>
     <?php
-        if(empty($_GET['description'])){
+        if(empty($_GET['id'])){
             $title = 'Registrar Actividad';
             $urlA = 'newActivity.php';
         }else{
             $title = 'Modificar Estudiante';
             $urlA = 'modifyActivity.php';
-            echo '<span>' . $_GET['codigoE'] . '</span>';
             $activity = $activities->readR($code);
         }        
     ?>
@@ -53,6 +53,7 @@
             <span>Nota: </span>
             <input type="number" min="0" max="5" step="any" id="scoreA" name="score" value="<?php echo $activity->getScore();?>" require>
         </label>
+        <input type="hidden" name="id" value="<?php echo $id ?>">
         <button type="submit">Aceptar</button>
     </form>
     <br> 

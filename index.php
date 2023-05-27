@@ -32,36 +32,38 @@
 
         <!-- Tabla principal -->
 
-        <table id="contenedorT">
-            <h2>Estudiantes</h2>
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
+        <form action="<?php echo $urlE ?>" method="post">
+            <table id="contenedorT">
+                <h2>Estudiantes</h2>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-            <tbody id="contenidoTb">
+                <tbody id="contenidoTb">
 
-                <!-- Se traen todos los registros existentes -->
+                    <!-- Se traen todos los registros existentes -->
 
-                <?php
-                    foreach($students as $student){
-                        echo '<tr>';
-                            echo '<td>' . $student->getCode() . '</td>';
-                            echo '<td>' . $student->getName() . '</td>';
-                            echo '<td>' . $student->getLastname() . '</td>';
-                            echo '<td><td><a href="views/scoreTable.php?codigo=' . $student->getCode() .'">Notas</a></td></td>';
-                            echo '<td><a href="views/formE.php?codigo=' . $student->getCode() .'">Modificar</a></td>';
-                            echo '<td><a href="views/deleteStudent.php?codigo=' . $student->getCode() .'">Eliminar</a></td></td>';
-                        echo '</tr>';        
-                    }
-                ?>
-            </tbody>
-        </table>
+                    <?php
+                        foreach($students as $student){
+                            echo '<tr>';
+                                echo '<td>' . $student->getCode() . '</td>';
+                                echo '<td>' . $student->getName() . '</td>';
+                                echo '<td>' . $student->getLastname() . '</td>';
+                                echo '<td><td><a href="views/scoreTable.php?codigo=' . $student->getCode() .'">Notas</a></td></td>';
+                                echo '<td><a href="views/formE.php?codigo=' . $student->getCode() .'">Modificar</a></td>';
+                                echo '<td><a href="views/deleteStudent.php?codigo=' . $student->getCode() .'">Eliminar</a></td></td>';
+                            echo '</tr>';        
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </form>
         <button id="agregarEBtn" onclick="location.href='<?php echo $urlE ?>'" type="button">Agregar estudiante</button>
     </main>
     <footer></footer>

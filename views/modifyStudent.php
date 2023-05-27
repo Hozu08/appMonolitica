@@ -8,6 +8,7 @@
         use studentsM\Student;
 
         $homeUrl = 'http://localhost/appMonolitica/index.php';
+        
         $student = new Student();
         $student->setCode($_POST['code']);
         $student->setName($_POST['name']);

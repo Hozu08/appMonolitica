@@ -40,7 +40,6 @@
                 $warning = '';
                 $showC = '<p>' . $_GET['codigo'] . '</p>';
                 $typeC = 'hidden';
-                echo '<span>' . $_GET['codigo'] . '</span>';
                 $student = $studentController->readR($code);
             }        
     ?>
